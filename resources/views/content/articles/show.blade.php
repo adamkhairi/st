@@ -13,30 +13,32 @@
         <div class="p-16"></div>
 
         <!--Title-->
-        @if(Auth::user()->is_admin)
-            {{--                        <form method="post" action="{{ route('article.update',$post->id) }}">--}}
+        @auth()
+            @if(Auth::user()->is_admin)
+                {{--                        <form method="post" action="{{ route('article.update',$post->id) }}">--}}
 
 
-            {{--                        </form>--}}
-            <div class="flex justify-center items-center">
-                <a type="button" href="
+                {{--                        </form>--}}
+                <div class="flex justify-center items-center">
+                    <a type="button" href="
                             {{ route('articles.edit', [$post->id]) }}
-                    "
-                   class="px-4 py-1 m-2 rounded btn-gardiant">
-                    Update
-                </a>
-                <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
-                      enctype="multipart/form-data">
-                    @csrf
-                    {{ method_field('DELETE') }}
-                    <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant"
-                    >
-                        Delete
-                    </button>
-                </form>
-            </div>
+                        "
+                       class="px-4 py-1 m-2 rounded btn-gardiant">
+                        Update
+                    </a>
+                    <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
+                          enctype="multipart/form-data">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant"
+                        >
+                            Delete
+                        </button>
+                    </form>
+                </div>
 
-        @endif
+            @endif
+        @endauth
 
         <div class="text-center ">
             <h1 class="font-bold break-normal py-2 font-title text-3xl md:text-5xl">{{ $post->title }}</h1>
