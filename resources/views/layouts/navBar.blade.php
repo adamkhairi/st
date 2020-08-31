@@ -10,7 +10,7 @@
         </div>
         <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
 
-            <a href="{{ route('activity') }}">Activités</a>
+            <a href="{{ route('activity.index') }}">Activités</a>
         </div>
         <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
             <a href="

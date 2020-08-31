@@ -25,6 +25,14 @@ Route::get('/activity', function (){
     return view('content.activity');
 })->name('activity');
 
+Route::resource('/activity', 'ActivityController')->names([ 
+    'index' => 'activity.index',
+    'create' => 'activity.create',
+    'update' => 'activity.update',
+    'edit' => 'activity.edit',
+    'destroy' => 'activity.destroy'
+ ]);
+
 Route::get('/contact', function (){
     return view('user.contact');
 })->name('contact');
