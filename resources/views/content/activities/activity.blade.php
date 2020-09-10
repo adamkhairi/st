@@ -12,57 +12,98 @@
 
         <div>
             @auth()
-            @if(auth()->user()->is_admin)
-                <div class="flex justify-center items-center">
-    
-                    <a href="{{ route('activity.create') }}" class="btn-gardiant px-4 py-1">
-                        Add Activity
-                    </a>
-    
-                </div>
-            @endif
-        @endauth
+                @if(auth()->user()->is_admin)
+                    <div class="flex justify-center items-center">
+
+                        <a href="{{ route('activity.create') }}" class="btn-gardiant px-4 py-1">
+                            Add Activity
+                        </a>
+
+
+                    </div>
+                @endif
+            @endauth
         </div>
         <div class="pt-8">
-        <h1 class="pb-3 text-2xl font-title border-b-2 border-bg-white">Videos</h1>
-        </div>
-
-        <div class="owl-carousel my-20">
-            <div class="text-center">
-                @foreach ($activ as $item)
-                
-                
-                <div class=" w-full lg:flex">
-                        <div class="">
-                            <video class="w-64" id=""
-                                   autoplay
-                                   loop
-                                   preload="auto"
-                                   muted
-                                   playsinline
-                            >
-                                <source src="{{ $item->video }}" type="video/mp4"/>
-                            </video>
-                        </div>
-                    {{-- <div
-                        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                        title="Woman holding a mug">
-                    </div> --}}
+            <h1 class="pb-3 text-2xl font-title border-b-2 border-bg-white">Videos</h1>
+            <div class="flex flex-wrap justify-center items-center">
+                @foreach($activ as $item)
                     <div
-                        class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8 text-gray-900">
-                            <p class="text-sm text-grey-dark flex items-center">
-                                Members only
+                        class="bg-white mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5">
+                        <video
+                            src="{{ $item->video }}"
+                            class="h-48 w-full object-cover object-center"
+                            loop
+                            preload="auto"
+                            muted
+                            playsinline
+
+                        ></video>
+                        <div class="w-full flex flex-col">
+                            <h3 class="font-bold text-gray-700 w-full text-center mt-1 cursor-default text-lg">
+                                {{ $item->title }}
+                            </h3>
+                            <p class="p-3 pt-1 cursor-default">
+                                {{ $item->description }}
                             </p>
-                            <div class="text-black font-bold text-xl mb-2">{{ $item->title }}</div>
-                            <p class="text-grey-darker text-base">{{ $item->description }}</p>
+                            <a href=""
+                               class="bg-blue-500 hover:bg-blue-600 text-white text-center px-3 py-1 m-2 focus:outline-none rounded">Look</a>
+                        </div>
+                        <div class="w-full flex">
+
+                            <a href="{{ route('activity.edit',$item->id) }}" class="btn-gardiant px-4 py-1">
+                                Update
+                            </a>
+                            <a href="{{ route('activity.destroy',$item->id) }}" class="btn-gardiant px-4 py-1">
+                                Delete
+                            </a>
+
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
-            
+
+        </div>
+        {{--PAGINATION--}}
+        <div class="bg-gray-200">
+            {{ $activ->links() }}
+        </div>
+        <div class="owl-carousel my-20">
+{{--            <div class="text-center">--}}
+{{--                @foreach ($activ as $item)--}}
+
+
+{{--                    <div class=" w-full lg:flex">--}}
+{{--                        <div class="">--}}
+{{--                            <video class="w-64" id=""--}}
+{{--                                   autoplay--}}
+{{--                                   loop--}}
+{{--                                   preload="auto"--}}
+{{--                                   muted--}}
+{{--                                   playsinline--}}
+{{--                            >--}}
+{{--                                <source src="{{ $item->video }}" type="video/mp4"/>--}}
+{{--                            </video>--}}
+{{--                        </div>--}}
+{{--                        --}}{{-- <div--}}
+{{--                            class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"--}}
+{{--                            style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"--}}
+{{--                            title="Woman holding a mug">--}}
+{{--                        </div> --}}
+{{--                        <div--}}
+{{--                            class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">--}}
+{{--                            <div class="mb-8 text-gray-900">--}}
+{{--                                <p class="text-sm text-grey-dark flex items-center">--}}
+{{--                                    Members only--}}
+{{--                                </p>--}}
+{{--                                <div class="text-black font-bold text-xl mb-2">{{ $item->title }}</div>--}}
+{{--                                <p class="text-grey-darker text-base">{{ $item->description }}</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+
         </div>
     </section>
     <section class="container mx-auto">
@@ -220,6 +261,6 @@
             </div>
         </section>
     </section>
-   
+
 @endsection
 

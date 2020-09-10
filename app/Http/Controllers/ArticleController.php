@@ -135,13 +135,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $request->validate([
-//            'title' => 'required|max:255',
-//            'body' => 'required',
-//        ]);
-//        $article->update($request->all());
-//        return redirect()->route('articles.index')->with('success', 'Articles updates successfully');
-
+//
 
         $post = Article::findOrFail($id);
 

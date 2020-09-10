@@ -39,7 +39,7 @@
 
 
                 <div class="flex justify-center flex-wrap items-center">
-                    <form class="w-full max-w-lg p-6" method="post" action="{{ route('activity.store')  }}"
+                    <form class="w-full max-w-lg p-6" method="post" action="{{ route('activity.update')  }}"
                           enctype="multipart/form-data">
 
                         @csrf
@@ -51,7 +51,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="title" type="text" name="title" placeholder="Title">
+                                    id="title" type="text" name="title" placeholder="Title" value="{{$activ->title}}">
                                 <input type="hidden" name="_token" value="{{Session::token()}}">
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <textarea
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     placeholder="description" name="description" id="description" cols="30"
-                                    rows="10"></textarea>
+                                    rows="10">{{ $activ->description }}</textarea>
                                 <div class="flex flex-wrap -mx-3 mb-6">
                                 </div>
                             </div>

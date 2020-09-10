@@ -3,25 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Article;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
     public function index()
     {
-        $activ = Activity::all();
-        return view('content.activities.activity', compact('activ'));
+        $activ = Activity::latest()->paginate(8);
+        return view('content.activities.activity', compact('activ'))->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
     public function create()
     {
@@ -31,8 +39,9 @@ class ActivityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Application|RedirectResponse|Response|Redirector
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -58,15 +67,14 @@ class ActivityController extends Controller
         $activ->save();
 
 
-
         return redirect('/activity')->with('success', 'Activité ajouté!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param Activity $activity
+     * @return void
      */
     public function show(Activity $activity)
     {
@@ -76,31 +84,55 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Application|Factory|View
      */
-    public function edit(Activity $activity)
+    public function edit($id)
     {
-        //
+        $activ = Article::findOrFail($id);
+        return view('content.activities.update', compact('activ'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return Application|RedirectResponse|Response|Redirector
      */
-    public function update(Request $request, Activity $activity)
+    public function update(Request $request, $id)
     {
-        //
+        $activ = Article::findOrFail($id);
+
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $name = $video->getClientOriginalName();
+            $video->move(public_path() . '/video/', $name);
+            $name = '/video/' . $name;
+            $activ->video = $name;
+        }
+
+        $file = $request->file('video');
+        $name = $file->getClientOriginalName();
+
+        $file->move(public_path() . '/video/', $name);
+
+        $activ->title = $request->title;
+        $activ->description = $request->description;
+        $activ->video = '/video/' . $name;
+
+
+        $activ->save();
+
+
+        return redirect('/activity/' . $id)->with('success', 'Activité ajouté!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param Activity $activity
+     * @return Response
      */
     public function destroy(Activity $activity)
     {
