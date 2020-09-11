@@ -18,7 +18,7 @@
                 ">Articles</a>
         </div>
         <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
-            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('send_email') }}">Contact</a>
         </div>
     </div>
 

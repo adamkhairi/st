@@ -39,9 +39,9 @@ Route::post('/activity/{id}/edit', [
     'as' => 'activity.update'
 ]);
 
-Route::get('/contact', function (){
-    return view('user.contact');
-})->name('contact');
+Route::get('/send_email', function (){
+    return view('user.send_email');
+})->name('send_email');
 
 //Route::get('/login','LoginController@login')->name('login');
 
@@ -110,3 +110,6 @@ Route::post('articles/{id}/comment/add', [
         'as' => 'admin.update'
      ]);
 // });
+
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
