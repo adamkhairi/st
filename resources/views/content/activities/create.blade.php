@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
-@section('content1')
 
-    <div class="p-16"></div>
+
+@section('content')
 
     {{-- **  ERRORS  ** --}}
     @include('layouts.errors')
+@endsection
 
+@section('content1')
 
+    <div class="p-16"></div>
 
     <section class="container mx-auto">
 

@@ -14,12 +14,13 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/navbar.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="js/BigPicture.min.js" defer></script>
 
-    <script src="https://kit.fontawesome.com/8ac7442e81.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/main.css') }}" rel="stylesheet">
+
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
 @include('layouts.navBar')
