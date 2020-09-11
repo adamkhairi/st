@@ -3,7 +3,27 @@
 @section('content1')
 
     <div class="p-16"></div>
+    <div class="w-full error fixed top-0 z-50">
+        @if ($message = Session::get('success'))
 
+            <div class="alert-banner w-1/3 mx-auto my-1">
+                <input type="checkbox" class="hidden" id="banneralert">
+                <label
+                    class="close cursor-pointer flex items-center justify-between w-full p-2 bg-green-500 shadow text-white"
+                    title="close" for="banneralert">
+
+
+                    <span>{{ $message }}</span>
+
+
+                    <i class="fas fa-exclamation text-white mr-2"></i>
+                </label>
+
+            </div>
+
+
+        @endif
+    </div>
 
     <div class="w-full error fixed top-0 z-50">
         @if ($errors->any())
@@ -31,7 +51,8 @@
 
     <section class="container mx-auto">
 
-        <h1 class="font-title text-4xl text-write text-center ">Ajouter un activity</h1>
+        <h1 class="font-title text-4xl text-write text-center ">Modifier une activité</h1>
+
 
 
         @auth
@@ -39,7 +60,7 @@
 
 
                 <div class="flex justify-center flex-wrap items-center">
-                    <form class="w-full max-w-lg p-6" method="post" action="{{ route('activity.update')  }}"
+                    <form class="w-full max-w-lg p-6" method="post" action="{{ route('activity.update',$activ->id)  }}"
                           enctype="multipart/form-data">
 
                         @csrf
@@ -80,7 +101,7 @@
                                 name="video" type="file" id="video" placeholder="">
                         </div>
 
-                        <button type="submit" class="mr-12 px-4 py-1 rounded btn-gardiant ">Ajouter</button>
+                        <button type="submit" class="mr-12 px-4 py-1 rounded btn-gardiant ">Modifier</button>
 
 
                     </form>

@@ -115,7 +115,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  $id
      * @return Application|Factory|Response|View
      */
     public function edit($id)

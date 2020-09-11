@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
-use App\Article;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -67,7 +66,7 @@ class ActivityController extends Controller
         $activ->save();
 
 
-        return redirect('/activity')->with('success', 'Activité ajouté!');
+        return redirect('/activity')->with('success', 'Activité ajouté! ');
     }
 
     /**
@@ -89,7 +88,8 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        $activ = Article::findOrFail($id);
+        $activ = Activity::findOrFail($id);
+
         return view('content.activities.update', compact('activ'));
     }
 
@@ -102,7 +102,14 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $activ = Article::findOrFail($id);
+        $this->validate($request, [
+            'title' => 'required|max:100',
+            'description' => 'required|max:1000 ',
+            'video' => 'required',
+
+        ]);
+
+        $activ = Activity::findOrFail($id);
 
         if ($request->hasFile('video')) {
             $video = $request->file('video');
@@ -112,30 +119,31 @@ class ActivityController extends Controller
             $activ->video = $name;
         }
 
-        $file = $request->file('video');
-        $name = $file->getClientOriginalName();
-
-        $file->move(public_path() . '/video/', $name);
 
         $activ->title = $request->title;
         $activ->description = $request->description;
-        $activ->video = '/video/' . $name;
+//        $activ->video = '/video/' . $name;
 
 
         $activ->save();
 
 
-        return redirect('/activity/' . $id)->with('success', 'Activité ajouté!');
+        return redirect()->back()->with('success', 'L\'activité est modifié avec succès!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Activity $activity
-     * @return Response
+     * @param $id
+     * @return RedirectResponse
      */
-    public function destroy(Activity $activity)
+    public function destroy($id)
     {
-        //
+        $activ = Activity::findOrFail($id);
+        $activ->delete();
+        return redirect()->route('activity')->with('success', 'Activité Supprimée');
     }
 }
+
+
+//'/activity/' . $id

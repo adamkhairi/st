@@ -6,7 +6,27 @@
         <h1 class=" text-center font-title text-5xl pt-24">Activités</h1>
     </div>
 
+    <div class="w-full error fixed top-0 z-50">
+        @if ($message = Session::get('success'))
 
+            <div class="alert-banner w-1/3 mx-auto my-1">
+                <input type="checkbox" class="hidden" id="banneralert">
+                <label
+                    class="close cursor-pointer flex items-center justify-between w-full p-2 bg-green-500 shadow text-white"
+                    title="close" for="banneralert">
+
+
+                    <span>{{ $message }}</span>
+
+
+                    <i class="fas fa-exclamation text-white mr-2"></i>
+                </label>
+
+            </div>
+
+
+        @endif
+    </div>
     <!-- carousel -->
     <section class="container mx-auto">
 
@@ -49,7 +69,7 @@
                             <a href=""
                                class="bg-blue-500 hover:bg-blue-600 text-white text-center px-3 py-1 m-2 focus:outline-none rounded">Look</a>
                         </div>
-                        <div class="w-full flex">
+                        <div class="w-full flex justify-around items-center">
 
                             <a href="{{ route('activity.edit',$item->id) }}" class="btn-gardiant px-4 py-1">
                                 Update
@@ -69,40 +89,40 @@
             {{ $activ->links() }}
         </div>
         <div class="owl-carousel my-20">
-{{--            <div class="text-center">--}}
-{{--                @foreach ($activ as $item)--}}
+            {{--            <div class="text-center">--}}
+            {{--                @foreach ($activ as $item)--}}
 
 
-{{--                    <div class=" w-full lg:flex">--}}
-{{--                        <div class="">--}}
-{{--                            <video class="w-64" id=""--}}
-{{--                                   autoplay--}}
-{{--                                   loop--}}
-{{--                                   preload="auto"--}}
-{{--                                   muted--}}
-{{--                                   playsinline--}}
-{{--                            >--}}
-{{--                                <source src="{{ $item->video }}" type="video/mp4"/>--}}
-{{--                            </video>--}}
-{{--                        </div>--}}
-{{--                        --}}{{-- <div--}}
-{{--                            class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"--}}
-{{--                            style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"--}}
-{{--                            title="Woman holding a mug">--}}
-{{--                        </div> --}}
-{{--                        <div--}}
-{{--                            class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">--}}
-{{--                            <div class="mb-8 text-gray-900">--}}
-{{--                                <p class="text-sm text-grey-dark flex items-center">--}}
-{{--                                    Members only--}}
-{{--                                </p>--}}
-{{--                                <div class="text-black font-bold text-xl mb-2">{{ $item->title }}</div>--}}
-{{--                                <p class="text-grey-darker text-base">{{ $item->description }}</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
+            {{--                    <div class=" w-full lg:flex">--}}
+            {{--                        <div class="">--}}
+            {{--                            <video class="w-64" id=""--}}
+            {{--                                   autoplay--}}
+            {{--                                   loop--}}
+            {{--                                   preload="auto"--}}
+            {{--                                   muted--}}
+            {{--                                   playsinline--}}
+            {{--                            >--}}
+            {{--                                <source src="{{ $item->video }}" type="video/mp4"/>--}}
+            {{--                            </video>--}}
+            {{--                        </div>--}}
+            {{--                        --}}{{-- <div--}}
+            {{--                            class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"--}}
+            {{--                            style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"--}}
+            {{--                            title="Woman holding a mug">--}}
+            {{--                        </div> --}}
+            {{--                        <div--}}
+            {{--                            class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">--}}
+            {{--                            <div class="mb-8 text-gray-900">--}}
+            {{--                                <p class="text-sm text-grey-dark flex items-center">--}}
+            {{--                                    Members only--}}
+            {{--                                </p>--}}
+            {{--                                <div class="text-black font-bold text-xl mb-2">{{ $item->title }}</div>--}}
+            {{--                                <p class="text-grey-darker text-base">{{ $item->description }}</p>--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                @endforeach--}}
+            {{--            </div>--}}
 
         </div>
     </section>
