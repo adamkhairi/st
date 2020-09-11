@@ -42,6 +42,8 @@
                             playsinline
 
                         ></video>
+                        <div>
+
                         <div class="w-full flex flex-col">
                             <h3 class="font-bold text-gray-700 w-full text-center mt-1 cursor-default text-lg">
                                 {{ $item->title }}
@@ -50,7 +52,7 @@
                                 {{ $item->description }}
                             </p>
                             <a href=""
-                               class="btn-gardiant text-white text-center px-3 py-1 m-2 focus:outline-none rounded">Look</a>
+                               class="btn-gardiant text-white text-center text-sm px-3 py-1 m-2 focus:outline-none rounded">Regarder</a>
                         </div>
                         <div class="w-full flex justify-around items-center pb-3">
 
@@ -66,6 +68,8 @@
                             </form>
 
                         </div>
+                        </div>
+
                     </div>
                 @endforeach
             </div>
