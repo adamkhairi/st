@@ -1,4 +1,8 @@
-<form action="" class="w-full">
+
+
+
+
+<form action="{{ route('admin.update',$prof->id) }}" class="w-full" method="POST">
 
     @csrf
 
@@ -29,8 +33,11 @@
                         <option selected value="1">Male</option>
                         <option value="0">Female</option>
                     </select>
-                    <label for="email">Email</label>
-                    <input class="mt-2" type="text" name="email" id="email" value="">
+                    <label for="address">address</label>
+                    <input class="mt-2" type="text" name="address" id="address" value="">
+                </div>
+                <div>
+                    <button type="submit" name="submit" id="">edit</button>
                 </div>
             </div>
         </div>

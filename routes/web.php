@@ -33,6 +33,7 @@ Route::resource('/activity', 'ActivityController')->names([
     'destroy' => 'activity.destroy'
  ]);
 
+
 Route::post('/activity/{id}/edit', [
     'uses' => 'ActivityController@update',
     'as' => 'activity.update'
@@ -92,3 +93,20 @@ Route::post('articles/{id}/comment/add', [
     'uses' => 'CommentsController@store',
     'as' => 'comment.store'
 ]);
+
+
+// Route::group(['middleware' => 'is_admin'], function () {
+
+    Route::resource('/admin', 'UsersController')->names([
+        'index' => 'users.index',
+        'create' => 'users.create',
+        'update' => 'users.update',
+        'edit' => 'users.edit',
+        'destroy' => 'users.destroy'
+     ]);
+    
+     Route::post('/admin/edit/{id}', [
+        'uses' => 'UsersController@update',
+        'as' => 'admin.update'
+     ]);
+// });
