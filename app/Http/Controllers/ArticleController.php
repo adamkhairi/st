@@ -23,7 +23,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $posts = Article::latest()->paginate(4);
+        $posts = Article::latest()->paginate(5);
 
         return view('content.articles.articles', compact('posts'))
             ->with('i', (request()->input('page', 1) - 1) * 4);
@@ -168,7 +168,7 @@ class ArticleController extends Controller
         $art = Article::findOrFail($id);
         $art->delete();
 //        dd($art);
-        return redirect()->route('articles.index')->with('success', 'Articles deleted successfully');
+        return redirect()->route('articles.index')->with('success', 'L\'Article est supprimé');
     }
 
     /**

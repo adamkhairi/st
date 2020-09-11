@@ -66,7 +66,7 @@ class ActivityController extends Controller
         $activ->save();
 
 
-        return redirect('/activity')->with('success', 'Activité ajouté! ');
+        return redirect('/activity')->with('success', 'Nouvelle Activité est ajouté! ');
     }
 
     /**
@@ -128,7 +128,7 @@ class ActivityController extends Controller
         $activ->save();
 
 
-        return redirect()->back()->with('success', 'L\'activité est modifié avec succès!');
+        return redirect('/activity')->with('success', 'L\'activité est modifié avec succès!');
     }
 
     /**
@@ -141,7 +141,7 @@ class ActivityController extends Controller
     {
         $activ = Activity::findOrFail($id);
         $activ->delete();
-        return redirect()->route('activity')->with('success', 'Activité Supprimée');
+        return redirect('/activity')->with('success', 'L\'Activité est supprimée');
     }
 }
 

@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
+
 @section('content')
-    <div class="relative flex justify-center items-center h-screen top-0 z-50 bg-black w-full h-screen">
+
+    {{-- **  ERRORS  ** --}}
+    @include('layouts.errors')
+
+
+    <div class="relative flex justify-center items-center h-screen top-0 z-30 bg-black w-full h-screen">
         <div class="absolute right-0 top-0 p-6 ">
             <a href="{{ url()->previous() }}" id="closeLogin">
                 <i class="fas fa-window-close text-white text-4xl"></i>

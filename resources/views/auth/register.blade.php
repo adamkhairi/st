@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+    {{-- **  ERRORS  ** --}}
+    @include('layouts.errors')
+
+@endsection
+@section('content1')
     <div class="m-2 p-4 text-center">
         <h1 class="text-4xl font-title">Inscrivez-vous </h1>
     </div>
@@ -40,7 +46,7 @@
                                 </label>
                                 <select name="genre" id="genre"
                                         class="form-input w-full @error('genre')  border-red-500 @enderror">
-                                    <option selected disabled >Sex</option>
+                                    <option selected disabled>Sex</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>

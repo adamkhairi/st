@@ -167,3 +167,8 @@ ul.pagination {
         visibility: hidden;
         }
     }
+
+.article-body {
+    height: 15rem;
+
+    }

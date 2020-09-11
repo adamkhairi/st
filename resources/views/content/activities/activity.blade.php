@@ -6,36 +6,18 @@
         <h1 class=" text-center font-title text-5xl pt-24">Activités</h1>
     </div>
 
-    <div class="w-full error fixed top-0 z-50">
-        @if ($message = Session::get('success'))
+    {{-- **  ERRORS  ** --}}
+    @include('layouts.errors')
 
-            <div class="alert-banner w-1/3 mx-auto my-1">
-                <input type="checkbox" class="hidden" id="banneralert">
-                <label
-                    class="close cursor-pointer flex items-center justify-between w-full p-2 bg-green-500 shadow text-white"
-                    title="close" for="banneralert">
-
-
-                    <span>{{ $message }}</span>
-
-
-                    <i class="fas fa-exclamation text-white mr-2"></i>
-                </label>
-
-            </div>
-
-
-        @endif
-    </div>
     <!-- carousel -->
     <section class="container mx-auto">
 
-        <div>
+        <div class="w-full my-4">
             @auth()
                 @if(auth()->user()->is_admin)
-                    <div class="flex justify-center items-center">
+                    <div class="flex justify-center items-center ">
 
-                        <a href="{{ route('activity.create') }}" class="btn-gardiant px-4 py-1">
+                        <a href="{{ route('activity.create') }}" class="btn-gardiant rounded px-4 py-1">
                             Add Activity
                         </a>
 

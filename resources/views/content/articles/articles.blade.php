@@ -3,6 +3,10 @@
 
 @section('content')
 
+    {{-- **  ERRORS  ** --}}
+    @include('layouts.errors')
+
+
     <div id="header" class="w-full  h-64">
         <h1 class=" text-center font-title text-5xl pt-24">Articles</h1>
     </div>
@@ -29,66 +33,33 @@
 
 
 @section('content1')
-    <div class="container mx-auto flex flex-wrap py-6">
-        <div class="w-full error fixed top-0 z-50">
-            @if ($message = Session::get('success'))
+    <div class="container mx-auto flex flex-wrap px-5 py-6">
 
-                <div class="alert-banner w-1/3 mx-auto my-1">
-                    <input type="checkbox" class="hidden" id="banneralert">
-                    <label
-                        class="close cursor-pointer flex items-center justify-between w-full p-2 bg-green-500 shadow text-white"
-                        title="close" for="banneralert">
-
-
-                        <span>{{ $message }}</span>
-
-
-                        <i class="fas fa-exclamation text-white mr-2"></i>
-                    </label>
-
-                </div>
-
-
-            @endif
-        </div>
-
-
-        <div class="w-full error fixed top-0 z-50">
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-
-                    <div class="alert-banner w-1/3 mx-auto my-1">
-                        <input type="checkbox" class="hidden" id="banneralert">
-                        <label
-                            class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
-                            title="close" for="banneralert">
-
-
-                            <span>{{ $error }}</span>
-
-
-                            <i class="fas fa-exclamation text-white mr-2"></i>
-                        </label>
-
-                    </div>
-                @endforeach
-
-            @endif
-        </div>
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+            <div class="block md:hidden w-full py-2 mb-4" >
+                <div class="bg-white shadow p-4 flex rounded">
+                    <span class="w-auto flex justify-end items-center text-gray-500 p-2">
+                        <i class="fas fa-search"></i>
+                     </span>
 
+                    <input class="w-full rounded p-2" type="text" placeholder="...">
+                    <button class="btn-gardiant font-bold rounded text-white p-2 pl-4 pr-4">
+                        Search
+                    </button>
+                </div>
+            </div>
 
             {{--                *******************--}}
             @foreach ($posts as $post)
 
                 {{--                ARTICLES--}}
-                <article class="flex flex-col shadow my-4">
+                <article class="flex flex-col shadow my-3">
                     <!-- Article Image -->
                     <a href="{{ route('articles.show',$post->id) }}" class="hover:opacity-75">
                         <img src="{{ $post->img }}" class="w-full overflow-hidden" alt="">
                     </a>
-                    <div class="bg-white flex flex-col justify-start p-6">
+                    <div class="bg-gray-200 article-body flex flex-col justify-start p-6">
                         <a href="{{ route('articles.show',$post->id) }}"
                            class="text-blue-700 text-sm font-bold uppercase pb-4">
                             {{ $post->category_id }}
@@ -97,17 +68,16 @@
                            class="text-3xl font-bold text-gray-800 pb-4">
                             {{ $post->title }}
                         </a>
-                        <a href="{{ route('articles.show',$post->id) }}" class="pb-6">
-                            <p class="text-black opacity-25">
+                        <a href="{{ route('articles.show',$post->id) }}" class="pb-6 overflow-hidden">
+                            <p class="text-gray-600  ">
                                 {{ $post->body }}
 
                             </p>
                         </a>
 
-                        <a class="uppercase text-right float-right btn-gardiant rounded px-4 py-2 m-2 relative bottom-0 right-0"
+                        <a class="uppercase w-3/12 ml-auto text-center float-right btn-gardiant rounded px-4 py-2 m-2 "
                            href="{{ route('articles.show',$post->id) }}">
-                            Continue
-                            Reading
+                          Lire plus
                             <i class="fas fa-long-arrow-alt-right pl-2"></i>
                         </a>
 
@@ -157,7 +127,18 @@
 
     <!-- Sidebar Section -->
         <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+            <div class="hidden md:block w-full py-2 mb-4">
+                <div class="bg-white shadow p-4 flex rounded">
+                    <span class="w-auto flex justify-end items-center text-gray-500 p-2">
+                        <i class="fas fa-search"></i>
+                     </span>
 
+                    <input class="w-full rounded p-2" type="text" placeholder="...">
+                    <button class="btn-gardiant font-bold rounded text-white p-2 pl-4 pr-4">
+                        Search
+                    </button>
+                </div>
+            </div>
             <div class="w-full bg-white text-black shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">About Us</p>
                 <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio

@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-
+@include('layouts.errors')
 @endsection
 
 @section('content1')
