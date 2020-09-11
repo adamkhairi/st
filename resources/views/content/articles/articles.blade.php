@@ -13,9 +13,10 @@
 
     @auth()
         @if(auth()->user()->is_admin)
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center p-3">
 
-                <a href="{{ route('articles.create') }}" class="btn-gardiant px-4 py-1">
+                <a href="{{ route('articles.create') }}" class="btn-gardiant rounded pr-4 py-1">
+                    <i class="fas fa-plus px-2"></i>
                     Add Article
                 </a>
 

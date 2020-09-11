@@ -17,7 +17,8 @@
                 @if(auth()->user()->is_admin)
                     <div class="flex justify-center items-center ">
 
-                        <a href="{{ route('activity.create') }}" class="btn-gardiant rounded px-4 py-1">
+                        <a href="{{ route('activity.create') }}" class="btn-gardiant rounded pr-4 py-1">
+                            <i class="fas fa-plus px-2"></i>
                             Add Activity
                         </a>
 
@@ -31,7 +32,7 @@
             <div class="flex flex-wrap justify-center items-center">
                 @foreach($activ as $item)
                     <div
-                        class="bg-white mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5">
+                        class="bg-white flex flex-col justify-between activity-card mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto">
                         <video
                             src="{{ $item->video }}"
                             class="h-48 w-full object-cover object-center"
@@ -49,16 +50,20 @@
                                 {{ $item->description }}
                             </p>
                             <a href=""
-                               class="bg-blue-500 hover:bg-blue-600 text-white text-center px-3 py-1 m-2 focus:outline-none rounded">Look</a>
+                               class="btn-gardiant text-white text-center px-3 py-1 m-2 focus:outline-none rounded">Look</a>
                         </div>
-                        <div class="w-full flex justify-around items-center">
+                        <div class="w-full flex justify-around items-center pb-3">
 
-                            <a href="{{ route('activity.edit',$item->id) }}" class="btn-gardiant px-4 py-1">
+                            <a href="{{ route('activity.edit',$item->id) }}" type="button" class="bg-blue-600 text-white rounded font-bold px-4 py-1">
                                 Update
                             </a>
-                            <a href="{{ route('activity.destroy',$item->id) }}" class="btn-gardiant px-4 py-1">
-                                Delete
-                            </a>
+                            <form action="{{ route('activity.destroy', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <button class="bg-red-600 rounded text-white font-bold px-4 py-1">
+                                    Delete
+                                </button>
+                            </form>
 
                         </div>
                     </div>
