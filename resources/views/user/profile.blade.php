@@ -150,9 +150,20 @@
                         <button class="px-8 py-2 btn-gardiant rounded m-2 ">
                             <i class="fas fa-edit pr-4"> </i>Edit Account
                         </button>
-                        <button class="px-8 py-2 btn-gardiant rounded m-2 ">
-                            <i class="fas fa-trash-alt pr-4"> </i>Delete Account
-                        </button>
+
+                        <form action="{{ route('users.destroy',Auth::user()->id) }}" method="POST"
+                              enctype="multipart/form-data">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant"
+                            >
+                                <i class="fas fa-trash-alt pr-4"> </i>Delete Account
+
+
+                            </button>
+                        </form>
+
+
 
                     </div>
 
@@ -204,62 +215,10 @@
                 </section>
 
                 <section id="editSec"
-                         class=" hidden row-span-2 col-start-2 col-span-4  lg:col-span-5 p-2 bg-gray-900 rounded-md">
-                    <form action="" method="post" class="">
-                        <div class="flex flex-col justify-center items-center">
-
-                            <!--                Username *******-->
-                            <div class="flex items-center justify-center">
-                                <label class="pr-6 p-2" for="name">Nom d'utilisateur</label>
-                                <input type="text" name="name" id="name" value="{{ Auth::user()->name }}">
-
-                            </div>
-
-                            <!--                Email *******-->
-                            <div class="flex items-center justify-center">
-                                <label class="pr-6 p-2" for="email">Email</label>
-                                <input type="text" name="email" id="age" value="{{ Auth::user()->email }}">
-
-                            </div>
-
-                            <!--                birthday *******-->
-                            <div class="flex items-center justify-center">
-                                <label class="pr-6 p-2" for="birthday">Age</label>
-
-                                <input type="date" name="birthday" id="birthday" value="{{ Auth::user()->birthday }}">
-                            </div>
+                         class=" hidden row-span-2 col-start-2 col-span-4  lg:col-span-5 p-2 bg-gray-900 rounded-md text-black">
 
 
-                            <!--                Sex *******-->
-                            {{-- 0 === Female--}}
-                            {{-- 1 === Male --}}
-
-                            <div class="flex items-center justify-center">
-                                <label class="pr-6 p-2" for="genre">Sex</label>
-                                <select name="genre" id="genre">
-                                    <option selected value="1">Male</option>
-                                    <option value="0">Female</option>
-                                </select>
-
-                            </div>
-
-
-                            <!--                Address *******-->
-                            <div class="flex items-center justify-center">
-                                <h4 class="pr-6 p-2 leading-5">Adresse Postale</h4>
-                                <span class="p-2">:</span>
-                                <p class="p-2 leading-loose">
-                                    @auth()
-                                        {{ Auth::user()->address }}
-                                    @endauth
-                                </p>
-                            </div>
-
-                            <div>
-                                <button type="submit" class="btn-gardiant px-5 py-2 ">Update</button>
-                            </div>
-                        </div>
-                    </form>
+                   @include('user.edit')
 
 
                 </section>

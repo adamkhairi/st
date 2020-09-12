@@ -1,48 +1,60 @@
+<form action="{{ route('users.update',$user) }}" class="w-full" method="POST" enctype="multipart/form-data">
+    <div class="flex flex-col justify-center items-baseline">
 
 
+        @csrf
+        <div class="flex flex-col">
 
+            <!--                Username *******-->
+            <div class="flex items-center justify-center">
+                <label class="text-gray-100 pr-6 p-2" for="name">Nom d'utilisateur</label>
+                <span class="px-2 text-white">:</span>
+                <input type="text" name="name" id="name" value="{{ Auth::user()->name }}">
 
-<form action="{{ route('admin.update',$prof->id) }}" class="w-full" method="POST">
-
-    @csrf
-
-    <div class="flex justify-center items-center p-4">
-        <div>
-
-
-            <div class="flex">
-                <div class="mr-4 flex flex-col">
-                    <label for="name">Name</label>
-                    <input class="mt-2" type="text" name="name" id="name" value="">
-                </div>
-
-                <div class=" flex flex-col">
-                    <label for="email">Email</label>
-                    <input class="mt-2" type="text" name="email" id="email" value="">
-                </div>
             </div>
-            <div class="flex">
-                <div class="mr-4 flex flex-col">
-                    <label for="birthday">Birthday</label>
-                    <input class="mt-2" type="text" name="birthday" id="birthday" value="">
-                </div>
 
-                <div class=" flex flex-col">
-                    <label for="genre">Gender</label>
-                    <select class="" name="genre" id="genre">
-                        <option selected value="1">Male</option>
-                        <option value="0">Female</option>
-                    </select>
-                    <label for="address">address</label>
-                    <input class="mt-2" type="text" name="address" id="address" value="">
-                </div>
-                <div>
-                    <button type="submit" name="submit" id="">edit</button>
-                </div>
+            <!--                Email *******-->
+            <div class="flex items-center justify-center">
+                <label class="text-gray-100 pr-6 p-2" for="email">Email</label>
+                <span class="px-2 text-white">:</span>
+                <input type="text" name="email" id="age" value="{{ Auth::user()->email }}">
+
+            </div>
+
+            <!--                birthday *******-->
+            <div class="flex items-center justify-center">
+                <label class="text-gray-100 pr-6 p-2" for="birthday">Age</label>
+                <span class="px-2 text-white">:</span>
+                <input type="date" name="birthday" id="birthday" value="{{ Auth::user()->birthday }}">
+            </div>
+
+
+            <!--                Sex *******-->
+            {{-- 0 === Female--}}
+            {{-- 1 === Male --}}
+
+            <div class="flex items-center justify-center">
+                <label class="text-gray-100 pr-6 p-2" for="genre">Sex</label>
+                <span class="px-2 text-white">:</span>
+                <select name="genre" id="genre">
+                    <option selected value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+
+            </div>
+
+
+            <!--                Address *******-->
+            <div class="flex items-center justify-center">
+                <label for="address" class=" text-gray-100 pr-6 p-2 leading-5">Adresse Postale</label>
+                <span class="px-2 text-white">:</span>
+                <input type="text" name="address" id="address" value="{{ $user->address }}">
+            </div>
+
+            <div>
+                <button type="submit" class="btn-gardiant px-5 py-2 ">Update</button>
             </div>
         </div>
 
-
     </div>
 </form>
-

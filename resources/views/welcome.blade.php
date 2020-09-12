@@ -74,13 +74,15 @@
             </div>
             <div class="my-4">
                 @if (Route::has('login'))
-                    <a href="{{ route('login') }}" id="loginBtnHero" class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Se
+                    <a href="{{ route('login') }}" id="loginBtnHero"
+                       class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Se
                         connecter</a>
 
 
                 @endif
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" id="registerBtn" class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
+                    <a href="{{ route('register') }}" id="registerBtn"
+                       class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
 
                 @endif
             </div>
@@ -99,73 +101,56 @@
 
         <h1 class="text-4xl text-center font-title">Activity</h1>
 
-        <div class="owl-carousel my-20">
-            <div class="text-center">
-                <div class=" w-full lg:flex">
-                    <div
-                        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                        title="Woman holding a mug">
+        <div class="owl-carousel my-20 flex">
+            @foreach($activ as $item)
+                <div
+                    class="bg-white flex flex-col justify-between activity-card mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto"
+                >
+                    <div class="flex">
+
+                        <div
+                            class="vid htmlvid"
+
+                            vidSrc="{{ $item->video }}"
+                        ></div>
                     </div>
-                    <div
-                        class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8 text-gray-900">
-                            <p class="text-sm text-grey-dark flex items-center">
-                                Members only
+
+                    <div>
+
+                        <div class="w-full flex flex-col">
+                            <h3 class="font-bold text-gray-700 w-full text-center mt-1 cursor-default text-lg">
+                                {{ $item->title }}
+                            </h3>
+                            <p class="p-3 pt-1 cursor-default">
+                                {{ $item->description }}
                             </p>
-                            <div class="text-black font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                            <p class="text-grey-darker text-base">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit.
-                                Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-                                nihil.</p>
+                            <a href=""
+                               class="btn-gardiant text-white text-center text-sm px-3 py-1 m-2 focus:outline-none rounded">Regarder</a>
                         </div>
+                        @auth()
+                            @if(auth()->user()->is_admin )
+                                <div class="w-full flex justify-around items-center pb-3">
+
+                                    <a href="{{ route('activity.edit',$item->id) }}" type="button"
+                                       class="bg-blue-600 text-white rounded font-bold px-4 py-1">
+                                        Update
+                                    </a>
+                                    <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <button class="bg-red-600 rounded text-white font-bold px-4 py-1">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </div>
+                            @endif
+                        @endauth
                     </div>
+
                 </div>
-            </div>
-            <div class="text-center">
-                <div class=" w-full lg:flex">
-                    <div
-                        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                        title="Woman holding a mug">
-                    </div>
-                    <div
-                        class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8 text-gray-900">
-                            <p class="text-sm flex items-center">
-                                Members only
-                            </p>
-                            <div class="text-black font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                            <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit.
-                                Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-                                nihil.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <div class=" w-full lg:flex">
-                    <div
-                        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                        title="Woman holding a mug">
-                    </div>
-                    <div
-                        class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8 text-gray-900">
-                            <p class="text-sm flex items-center">
-                                Members only
-                            </p>
-                            <div class="text-black font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                            <p class="text-grey-darker text-base">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit.
-                                Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-                                nihil.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -177,45 +162,29 @@
         <h1 class="text-4xl text-center font-title mb-16">Articles</h1>
         <div class="flex justify-center">
             <div class="flex flex-col md:w-3/6 w-100 px-6 h-full overflow-hidden">
-                <div class="pb-4 col-span-8">
-                    <div class="lg:flex justify-center items-center">
-                        <img class="pr-6 md:w-2/4 img-art" src="img/article1.png" alt="">
-                        <div class="relative">
-                            <h1 class="font-title text-2xl mb-2">uncomming fighter</h1>
-                            <p class="pr-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, velit
-                                ipsa accusamus sunt alias sit blanditiis possimus totam fuga similique cum maxime esse
-                                eos quos quasi. Impedit minima quas voluptas.</p>
-                            <a class="float-right btn-gardiant rounded px-4 py-1 m-2 relative bottom-0 right-0"
-                               href="#">voir plus...</a></div>
-                    </div>
+                @foreach($topArt as $article)
 
-                </div>
-                <div class="pb-4 col-span-8">
-                    <div class="lg:flex justify-center items-center">
-                        <img class="pr-6 md:w-2/4 img-art" src="img/article2.png" alt="">
-                        <div class="relative">
-                            <h1 class="font-title text-2xl mb-2">uncomming fighter</h1>
-                            <p class="pr-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, velit
-                                ipsa accusamus sunt alias sit blanditiis possimus totam fuga similique cum maxime esse
-                                eos quos quasi. Impedit minima quas voluptas.</p>
-                            <a class="float-right btn-gardiant rounded px-4 py-1 m-2 relative bottom-0 right-0"
-                               href="#">voir plus...</a></div>
-                    </div>
+                    <div class="pb-4 col-span-8">
+                        <div class="lg:flex justify-center items-center">
+                            <a href="{{ route('articles.show',$article->id) }}">
 
-                </div>
-                <div class="pb-4 col-span-8">
-                    <div class="lg:flex justify-center items-center">
-                        <img class="pr-6 md:w-2/4 img-art" src="img/article3.png" alt="">
-                        <div class="relative">
-                            <h1 class="font-title text-2xl mb-2">uncomming fighter</h1>
-                            <p class="pr-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, velit
-                                ipsa accusamus sunt alias sit blanditiis possimus totam fuga similique cum maxime esse
-                                eos quos quasi. Impedit minima quas voluptas.</p>
-                            <a class="float-right btn-gardiant rounded px-4 py-1 m-2 relative bottom-0 right-0"
-                               href="#">voir plus...</a></div>
-                    </div>
+                                <img class="pr-6 md:w-2/4 img-art" src="{{ $article->img }}" alt="">
+                            </a>
 
-                </div>
+                            <div class="relative">
+                                <h1 class="font-title text-2xl mb-2">
+                                    {{ $article->title }}
+                                </h1>
+                                <p class="pr-6">
+                                    {{ $article->body }}
+
+                                </p>
+                                <a class="float-right btn-gardiant rounded px-4 py-1 m-2 relative bottom-0 right-0"
+                                   href="#">voir plus...</a></div>
+                        </div>
+
+                    </div>
+                @endforeach
             </div>
             <div class="my-auto">
                 <img class="hidden lg:block pl-10" src="img/580b57fcd9996e24bc43c297.png" alt=""

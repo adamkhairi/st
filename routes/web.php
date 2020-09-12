@@ -1,6 +1,7 @@
 <?php
 
-use App\User;
+use App\Activity;
+use App\Article;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+
+    $activ = Activity::latest()->take(5)->get();
+    $topArt = Article::latest()->take(3)->get();
+    return view('welcome', compact('activ','topArt'));
 })->name('/');
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home',  function () {
+
+    $activ = Activity::latest()->take(5)->get();
+    return view('welcome', compact('activ'));
+})->name('home');
 
 Route::get('/activity', function (){
     return view('content.activity');
@@ -45,22 +54,21 @@ Route::get('/send_email', function (){
 
 //Route::get('/login','LoginController@login')->name('login');
 
-Route::prefix('user')->group(function (){
+
     Route::get('/profile',function (){
+
         return view('user.profile') ;
 
+
     })->name('user.profile');
-});
 
-Route::prefix('admin')->group(function () {
 
-    Route::get('/profile', function () {
-        return view('admin.adminHome');
-    })->name('admin.profile');
+//    Route::get('/profile', function () {
+//    })->name('admin.profile')->middleware('is_admin');
 
-    Route::get('/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+//    Route::get('/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
-});
+
 
 //Route::get('/login', 'auth\LoginController@login')->name('login');
 //Route::get('/logout', 'LoginController@logout')->name('logout');
@@ -97,17 +105,17 @@ Route::post('articles/{id}/comment/add', [
 
 // Route::group(['middleware' => 'is_admin'], function () {
 
-    Route::resource('/admin', 'UsersController')->names([
+    Route::resource('/profile', 'ProfileController')->names([
         'index' => 'users.index',
         'create' => 'users.create',
         'update' => 'users.update',
         'edit' => 'users.edit',
         'destroy' => 'users.destroy'
      ]);
-    
-     Route::post('/admin/edit/{id}', [
-        'uses' => 'UsersController@update',
-        'as' => 'admin.update'
+
+     Route::post('/profile/{id}', [
+        'uses' => 'ProfileController@update',
+        'as' => 'users.update'
      ]);
 // });
 
