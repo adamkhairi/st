@@ -75,8 +75,8 @@
             @endif
         @else
             @if (auth()->check())
-                @if (auth()->user()->is_admin)
-                    <a class="" href="{{ Route('admin.profile') }}">
+{{--                @if (auth()->user()->is_admin)--}}
+                    <a class="" href="{{ url('/profile') }}">
                         <div class="flex flex-row justify-center items-center">
                             <div class="rounded-full btn-gardiant">
 
@@ -94,26 +94,26 @@
                         <img src="/img/stream.svg" class="rounded-lg" alt="">
                     </a>
 
-                @else
-                    <a class="" href="{{ Route('user.profile') }}">
-                        <div class="flex flex-row justify-center items-center">
-                            <div class="rounded-full btn-gardiant">
+{{--                @else--}}
+{{--                    <a class="" href="{{ Route('user.profile') }}">--}}
+{{--                        <div class="flex flex-row justify-center items-center">--}}
+{{--                            <div class="rounded-full btn-gardiant">--}}
 
-                                <i class="fas fa-user-circle text-5xl m-1"></i>
-                            </div>
+{{--                                <i class="fas fa-user-circle text-5xl m-1"></i>--}}
+{{--                            </div>--}}
 
-                            {{--                    <div>--}}
+{{--                            --}}{{--                    <div>--}}
 
-                            {{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
-                            {{--                    </div>--}}
-                        </div>
+{{--                            --}}{{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
+{{--                            --}}{{--                    </div>--}}
+{{--                        </div>--}}
 
-                    </a>
+{{--                    </a>--}}
 
-                    <a href="##" class="m-1 flex-shrink-0"><img src="/img/stream.svg" class="rounded-lg" alt=""></a>
+{{--                    <a href="##" class="m-1 flex-shrink-0"><img src="/img/stream.svg" class="rounded-lg" alt=""></a>--}}
 
                 @endif
-            @endif
+{{--            @endif--}}
 
             <a href="{{ route('logout') }}"
                class="no-underline btn-gardiant px-4 py-1 rounded hover:underline text-gray-300 text-sm p-3"

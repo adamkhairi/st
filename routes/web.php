@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,22 +44,21 @@ Route::get('/send_email', function (){
 
 //Route::get('/login','LoginController@login')->name('login');
 
-Route::prefix('user')->group(function (){
+
     Route::get('/profile',function (){
+
         return view('user.profile') ;
 
+
     })->name('user.profile');
-});
 
-Route::prefix('admin')->group(function () {
 
-    Route::get('/profile', function () {
-        return view('admin.adminHome');
-    })->name('admin.profile');
+//    Route::get('/profile', function () {
+//    })->name('admin.profile')->middleware('is_admin');
 
-    Route::get('/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+//    Route::get('/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
-});
+
 
 //Route::get('/login', 'auth\LoginController@login')->name('login');
 //Route::get('/logout', 'LoginController@logout')->name('logout');
@@ -97,17 +95,17 @@ Route::post('articles/{id}/comment/add', [
 
 // Route::group(['middleware' => 'is_admin'], function () {
 
-    Route::resource('/admin', 'UsersController')->names([
+    Route::resource('/profile', 'UsersController')->names([
         'index' => 'users.index',
         'create' => 'users.create',
         'update' => 'users.update',
         'edit' => 'users.edit',
         'destroy' => 'users.destroy'
      ]);
-    
-     Route::post('/admin/edit/{id}', [
+
+     Route::patch('/profile/{user}', [
         'uses' => 'UsersController@update',
-        'as' => 'admin.update'
+        'as' => 'users.update'
      ]);
 // });
 
