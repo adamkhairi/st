@@ -150,9 +150,20 @@
                         <button class="px-8 py-2 btn-gardiant rounded m-2 ">
                             <i class="fas fa-edit pr-4"> </i>Edit Account
                         </button>
-                        <button class="px-8 py-2 btn-gardiant rounded m-2 ">
-                            <i class="fas fa-trash-alt pr-4"> </i>Delete Account
-                        </button>
+
+                        <form action="{{ route('users.destroy',Auth::user()->id) }}" method="POST"
+                              enctype="multipart/form-data">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant"
+                            >
+                                <i class="fas fa-trash-alt pr-4"> </i>Delete Account
+
+
+                            </button>
+                        </form>
+
+
 
                     </div>
 

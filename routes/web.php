@@ -95,7 +95,7 @@ Route::post('articles/{id}/comment/add', [
 
 // Route::group(['middleware' => 'is_admin'], function () {
 
-    Route::resource('/profile', 'UsersController')->names([
+    Route::resource('/profile', 'ProfileController')->names([
         'index' => 'users.index',
         'create' => 'users.create',
         'update' => 'users.update',
@@ -103,8 +103,8 @@ Route::post('articles/{id}/comment/add', [
         'destroy' => 'users.destroy'
      ]);
 
-     Route::patch('/profile/{user}', [
-        'uses' => 'UsersController@update',
+     Route::post('/profile/{id}', [
+        'uses' => 'ProfileController@update',
         'as' => 'users.update'
      ]);
 // });

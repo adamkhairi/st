@@ -1,7 +1,10 @@
 <form action="{{ route('users.update',$user) }}" class="w-full" method="POST" enctype="multipart/form-data">
     <div class="flex flex-col justify-center items-center">
-    {{ method_field('patch') }}
-        <!--                Username *******-->
+
+
+    @csrf
+
+    <!--                Username *******-->
         <div class="flex items-center justify-center">
             <label class="text-gray-100 pr-6 p-2" for="name">Nom d'utilisateur</label>
             <span class="px-2 text-white">:</span>
@@ -48,7 +51,7 @@
         </div>
 
         <div>
-            <button type="submit"  class="btn-gardiant px-5 py-2 ">Update</button>
+            <button type="submit" class="btn-gardiant px-5 py-2 ">Update</button>
         </div>
     </div>
 </form>
