@@ -1,5 +1,7 @@
 <?php
 
+use App\Activity;
+use App\Article;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+
+    $activ = Activity::latest()->take(5)->get();
+    $topArt = Article::latest()->take(3)->get();
+    return view('welcome', compact('activ','topArt'));
 })->name('/');
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home',  function () {
+
+    $activ = Activity::latest()->take(5)->get();
+    return view('welcome', compact('activ'));
+})->name('home');
 
 Route::get('/activity', function (){
     return view('content.activity');

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -12,13 +15,18 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $user = User::findOrFail($id);
-        return view('user.profile', compact('user'));
+        if (Auth::check()) {
+
+            $id = auth()->user()->id;
+            $user = User::findOrFail($id);
+            return view('user.profile', compact('user'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -57,7 +65,7 @@ class ProfileController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -72,7 +80,7 @@ class ProfileController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|Response|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Response|Redirector
      */
     public function update(Request $request, $id)
     {
@@ -117,13 +125,13 @@ class ProfileController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return Application|RedirectResponse|Response|Redirector
      */
     public function destroy($id)
     {
 //        $prof = Auth::user();
         $prof = User::findOrfail($id);
         $prof->delete();
-        return redirect('/')->with('success' , 'Your account was deleted');
+        return redirect('/')->with('success', 'Your account was deleted');
     }
 }
