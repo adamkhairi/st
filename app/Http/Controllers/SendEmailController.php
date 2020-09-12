@@ -28,7 +28,7 @@ class SendEmailController extends Controller
         );
 
         
-        Mail::to('stage.mail111@gmail.com')->send(new SendMail($data));
+        Mail::to('php.mail111@gmail.com')->send(new SendMail($data));
         return back()->with('success', 'thanks for contacting us!');
     }
 }
