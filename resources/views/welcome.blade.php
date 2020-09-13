@@ -67,6 +67,7 @@
                             <a href=""
                                class="btn-gardiant text-white text-center text-sm px-3 py-1 m-2 focus:outline-none rounded">Regarder</a>
                         </div>
+
                         @auth()
                             @if(auth()->user()->is_admin )
                                 <div class="w-full flex justify-around items-center pb-3">
@@ -87,6 +88,7 @@
                                 </div>
                             @endif
                         @endauth
+
                     </div>
 
                 </div>

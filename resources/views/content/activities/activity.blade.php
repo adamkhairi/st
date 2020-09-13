@@ -29,12 +29,12 @@
         </div>
         <div class="pt-8">
             <h1 class="pb-3 text-2xl font-title border-b-2 border-bg-white">Videos</h1>
-            <div class="flex flex-wrap justify-center items-center " id="video_container">
+            <div class="flex flex-wrap justify-between items-center " id="video_container">
 
                 @foreach($activ as $item)
                     <div
-                        class="bg-white flex flex-col justify-between activity-card mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto"
-                        >
+                        class="bg-white flex flex-col justify-between activity-card mx-4 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto"
+                    >
                         <div class="flex">
 
                             <div
@@ -56,22 +56,26 @@
                                 <a href=""
                                    class="btn-gardiant text-white text-center text-sm px-3 py-1 m-2 focus:outline-none rounded">Regarder</a>
                             </div>
-                            <div class="w-full flex justify-around items-center pb-3">
+                            @auth()
+                                @if(auth()->user()->is_admin )
+                                    <div class="w-full flex justify-around items-center pb-3">
 
-                                <a href="{{ route('activity.edit',$item->id) }}" type="button"
-                                   class="bg-blue-600 text-white rounded font-bold px-4 py-1">
-                                    Update
-                                </a>
-                                <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
-                                      enctype="multipart/form-data">
-                                    @csrf
-                                    {{ method_field('DELETE') }}
-                                    <button class="bg-red-600 rounded text-white font-bold px-4 py-1">
-                                        Delete
-                                    </button>
-                                </form>
+                                        <a href="{{ route('activity.edit',$item->id) }}" type="button"
+                                           class="bg-blue-600 text-white rounded font-bold px-4 py-1">
+                                            Update
+                                        </a>
+                                        <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
+                                              enctype="multipart/form-data">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <button class="bg-red-600 rounded text-white font-bold px-4 py-1">
+                                                Delete
+                                            </button>
+                                        </form>
 
-                            </div>
+                                    </div>
+                                @endif
+                            @endauth
                         </div>
 
                     </div>

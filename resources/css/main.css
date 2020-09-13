@@ -3,6 +3,7 @@ body {
     font-family: "Cairo", sans-serif;
     color: white;
     box-sizing: border-box;
+
     }
 
 #header {
@@ -173,7 +174,7 @@ ul.pagination {
     }
 
 .activity-card {
-    height: 22rem;
+    height: 28rem;
     }
 
 /**********************************************************/
