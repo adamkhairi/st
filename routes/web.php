@@ -27,7 +27,9 @@ Route::get('/', function () {
 Route::get('/home',  function () {
 
     $activ = Activity::latest()->take(5)->get();
-    return view('welcome', compact('activ'));
+    $topArt = Article::latest()->take(3)->get();
+
+    return view('welcome', compact('activ','topArt'));
 })->name('home');
 
 Route::get('/activity', function (){

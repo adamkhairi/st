@@ -47,8 +47,8 @@
                                 <select name="genre" id="genre"
                                         class="form-input w-full @error('genre')  border-red-500 @enderror">
                                     <option selected disabled>Sex</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
                                 </select>
 
                                 @error('genre')
