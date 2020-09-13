@@ -1,66 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="w-full error fixed top-0 z-50">
-        @if ($message = Session::get('success'))
 
-            <div class="alert-banner w-1/3 mx-auto my-1">
-                <input type="checkbox" class="hidden" id="banneralert">
-                <label
-                    class="close cursor-pointer flex items-center justify-between w-full p-2 bg-green-500 shadow text-white"
-                    title="close" for="banneralert">
-
-
-                    <span>{{ $message }}</span>
-
-
-                    <i class="fas fa-exclamation text-white mr-2"></i>
-                </label>
-
-            </div>
-
-        @elseif($message = Session::get('error'))
-            <div class="alert-banner w-1/3 mx-auto my-1">
-                <input type="checkbox" class="hidden" id="banneralert">
-                <label
-                    class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
-                    title="close" for="banneralert">
-
-
-                    <span>{{ $message }}</span>
-
-
-                    <i class="fas fa-exclamation text-white mr-2"></i>
-                </label>
-
-            </div>
-
-        @endif
-    </div>
-
-    <div class="w-full error fixed top-0 z-50">
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-
-                <div class="alert-banner w-1/3 mx-auto my-1">
-                    <input type="checkbox" class="hidden" id="banneralert">
-                    <label
-                        class="close cursor-pointer flex items-center justify-between w-full p-2 bg-red-500 shadow text-white"
-                        title="close" for="banneralert">
-
-
-                        <span>{{ $error }}</span>
-
-
-                        <i class="fas fa-exclamation text-white mr-2"></i>
-                    </label>
-
-                </div>
-            @endforeach
-
-        @endif
-    </div>
-@endsection
 
 @section('content1')
     <section
@@ -127,6 +67,7 @@
                             <a href=""
                                class="btn-gardiant text-white text-center text-sm px-3 py-1 m-2 focus:outline-none rounded">Regarder</a>
                         </div>
+
                         @auth()
                             @if(auth()->user()->is_admin )
                                 <div class="w-full flex justify-around items-center pb-3">
@@ -147,6 +88,7 @@
                                 </div>
                             @endif
                         @endauth
+
                     </div>
 
                 </div>
@@ -157,7 +99,7 @@
 @endsection
 
 @section('content3')
-    <section class="w-full mt-16">
+    <section class="w-full mt-16 ">
 
         <h1 class="text-4xl text-center font-title mb-16">Articles</h1>
         <div class="flex justify-center">
@@ -165,22 +107,25 @@
                 @foreach($topArt as $article)
 
                     <div class="pb-4 col-span-8">
-                        <div class="lg:flex justify-center items-center">
-                            <a href="{{ route('articles.show',$article->id) }}">
+                        <div class="lg:flex justify-start items-center">
+                            <div class=" md:w-2/4 img-art">
 
-                                <img class="pr-6 md:w-2/4 img-art" src="{{ $article->img }}" alt="">
-                            </a>
+                                <img class="pr-6 " src="{{ $article->img }}" alt="">
+                            </div>
 
-                            <div class="relative">
-                                <h1 class="font-title text-2xl mb-2">
-                                    {{ $article->title }}
-                                </h1>
+                            <div class="">
+                                <a href="{{ route('articles.show',$article->id) }}" class="overflow-hidden">
+                                    <h1 class="font-title text-2xl mb-2">
+                                        {{ $article->title }}
+                                    </h1>
+                                </a>
                                 <p class="pr-6">
                                     {{ $article->body }}
 
                                 </p>
                                 <a class="float-right btn-gardiant rounded px-4 py-1 m-2 relative bottom-0 right-0"
-                                   href="#">voir plus...</a></div>
+                                   href="{{ route('articles.show',$article->id) }}">voir plus...</a>
+                            </div>
                         </div>
 
                     </div>

@@ -22,7 +22,7 @@
     <link href="{{ mix('css/main.css') }}" rel="stylesheet">
 
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none">
+<body class="bg-gray-100 h-screen antialiased">
 @include('layouts.navBar')
 
 <div id="app">
