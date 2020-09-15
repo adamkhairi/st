@@ -7,24 +7,29 @@
         class="flex md:flex-row justify-around items-center p-6 text-center flex-col-reverse container h-screen mx-auto">
 
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center ">
             <div class="my-4">
                 <h1 class="text-4xl font-bold mb-6 font-title">Commencer</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, quis.</p>
             </div>
             <div class="my-4">
-                @if (Route::has('login'))
-                    <a href="{{ route('login') }}" id="loginBtnHero"
-                       class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Se
-                        connecter</a>
+                <div class="my-6">
+                    @if (Route::has('login'))
+                        <a href="{{ route('login') }}" id="loginBtnHero"
+                           class="btn-gardiant px-4 py-1  rounded whitespace-no-wrap">Se
+                            connecter</a>
 
 
-                @endif
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" id="registerBtn"
-                       class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
+                    @endif
+                </div>
+                <div class="my-6">
 
-                @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" id="registerBtn"
+                           class="btn-gardiant px-4 py-1 mt-5 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
+
+                    @endif
+                </div>
             </div>
 
         </div>
@@ -73,7 +78,7 @@
                                 <div class="w-full flex justify-around items-center pb-3">
 
                                     <a href="{{ route('activity.edit',$item->id) }}" type="button"
-                                       class="bg-blue-600 text-white rounded font-bold px-4 py-1">
+                                       class="bg-blue-600 text-white rounded font-bold md:mb-4 px-4 py-1">
                                         Update
                                     </a>
                                     <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
