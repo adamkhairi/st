@@ -86,8 +86,8 @@
                         @auth()
                             @if(auth()->user()->is_admin)
                                 <div class="flex justify-center items-center">
-                                    <div>
-                                        <a type="button" class="btn-gardiant rounded-full px-4 py-1"
+                                    <div class="ml-2">
+                                        <a type="button" class="btn-gardiant rounded-lg px-4 py-1 mx-2"
                                            href="{{route('articles.edit',[$post->id])}}">
                                             UPDATE
                                         </a>
@@ -98,7 +98,7 @@
                                               enctype="multipart/form-data"  onsubmit="return confirm('Vous êtes sur ?');">
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn-gardiant rounded-full px-4 py-1"
+                                            <button type="submit" class="btn-gardiant rounded-lg px-4 py-1 mx-2"
                                             >
                                                 Delete
                                             </button>
