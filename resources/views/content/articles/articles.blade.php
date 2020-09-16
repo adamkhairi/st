@@ -38,7 +38,7 @@
 
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-            <div class="block md:hidden w-full py-2 mb-4" >
+            <div class="block md:hidden w-full py-2 mb-4">
                 <div class="bg-white shadow p-4 flex rounded">
                     <span class="w-auto flex justify-end items-center text-gray-500 p-2">
                         <i class="fas fa-search"></i>
@@ -63,7 +63,8 @@
                     <div class="bg-gray-200 article-body flex flex-col justify-start p-6">
                         <a href="{{ route('articles.show',$post->id) }}"
                            class="text-blue-700 text-sm font-bold uppercase pb-4">
-                            {{ $post->category_id }}
+                            {{ $post->getCat($post->category_id)->name }}
+
                         </a>
                         <a href="{{ route('articles.show',$post->id) }}"
                            class="text-3xl font-bold text-gray-800 pb-4">
@@ -78,7 +79,7 @@
 
                         <a class="uppercase w-3/12 ml-auto text-center float-right btn-gardiant rounded px-4 py-2 m-2 "
                            href="{{ route('articles.show',$post->id) }}">
-                          Lire plus
+                            Lire plus
                             <i class="fas fa-long-arrow-alt-right pl-2"></i>
                         </a>
 
@@ -95,12 +96,13 @@
 
                                     <div>
                                         <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
-                                              enctype="multipart/form-data"  onsubmit="return confirm('Vous êtes sur ?');">
+                                              enctype="multipart/form-data"
+                                              onsubmit="return confirm('Vous êtes sur ?');">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn-gardiant rounded-lg px-4 py-1 mx-2"
                                             >
-                                                Delete
+                                                DELETE
                                             </button>
                                         </form>
                                     </div>

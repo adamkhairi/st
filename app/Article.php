@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -21,6 +22,11 @@ class Article extends Model
     {
         return $this->beLongsTo('App\User');
 
+    }
+
+    public function getCat($id)
+    {
+        return DB::table('categories')->where('id', $id)->first();
     }
 
 }
