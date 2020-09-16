@@ -29,11 +29,11 @@
         </div>
         <div class="pt-8">
             <h1 class="pb-3 text-2xl font-title border-b-2 border-bg-white">Videos</h1>
-            <div class="flex flex-wrap justify-between items-center " id="video_container">
+            <div class="flex flex-wrap justify-between  items-center " id="video_container">
 
                 @foreach($activ as $item)
                     <div
-                        class="bg-white flex flex-col justify-between activity-card mx-4 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto"
+                        class="bg-white flex flex-col justify-between activity-card w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto mx-auto md:mx-4"
                     >
                         <div class="flex">
 

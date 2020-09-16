@@ -121,52 +121,54 @@
             </div>
 
             <hr class="border-b border-gray-200 py-4">
+<div class="container mx-auto flex flex-col justify-center items-center">
+    @auth
+        <div class="flex justify-center flex-wrap items-center">
 
-            @auth
-                <div class="flex justify-center flex-wrap items-center">
-
-                    <form class="w-full max-w-lg p-6" method="post" action="
+            <form class="w-full max-w-lg p-6" method="post" action="
                             {{route('comment.store',[$post->id])}}
-                        ">
+                ">
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <input type="hidden" name="_token" value="{{Session::token()}}">
-                                <input type="hidden" name="post_id" value="{{$post->id}}">
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="body">
-                                    Add comment
-                                </label>
-                                <textarea
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    placeholder="comment" name="message" id="body" cols="30" rows="3"></textarea>
-                                <div class="flex flex-wrap -mx-3 mb-6">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="mr-12 px-4 py-1 rounded btn-gardiant ">Commenter</button>
-
-                    </form>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                        <input type="hidden" name="post_id" value="{{$post->id}}">
+                    </div>
                 </div>
 
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                               for="body">
+                            Add comment
+                        </label>
+                        <textarea
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            placeholder="comment" name="message" id="body" cols="30" rows="3"></textarea>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                        </div>
+                    </div>
+                </div>
 
-            @else
-                @if (Route::has('login'))
-                    <a href="{{ route('login') }}" id="loginBtnHero"
-                       class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Se
-                        connecter</a>
+                <button type="submit" class="mr-12 px-4 py-1 rounded btn-gardiant ">Commenter</button>
+
+            </form>
+        </div>
 
 
-                @endif
-                {{--                <a href="{{route('login')}}" class="px-4 py-1 m-2 btn-gardiant">Connecte First</a>--}}
-            @endauth
+    @else
+        @if (Route::has('login'))
+            <a href="{{ route('login') }}" id="loginBtnHero"
+               class="btn-gardiant px-4 py-1 m-2 rounded whitespace-no-wrap">Se
+                connecter</a>
 
+
+        @endif
+        {{--                <a href="{{route('login')}}" class="px-4 py-1 m-2 btn-gardiant">Connecte First</a>--}}
+    @endauth
+
+
+</div>
 
         </div>
 

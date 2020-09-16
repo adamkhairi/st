@@ -1,15 +1,11 @@
 @extends('layouts.app')
+@section('content1')
+    @include('layouts.errors')
+    <div class="container mx-auto ">
 
-@section('content')
-    <div class="container mx-auto">
-        <div class="flex flex-wrap justify-center">
+        <div class="flex flex-wrap justify-center min-h-screen items-center" >
             <div class="w-full max-w-sm">
 
-                @if (session('status'))
-                    <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
 
                 <div class="flex flex-col break-words bg-white border-2 rounded shadow-md">
 
@@ -25,17 +21,20 @@
                                 {{ __('E-Mail Address') }}:
                             </label>
 
-                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email"
+                                   class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                                   value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
-                                <p class="text-red-500 text-xs italic mt-4">
-                                    {{ $message }}
-                                </p>
+                            <p class="text-red-500 text-xs italic mt-4">
+                                {{ $message }}
+                            </p>
                             @enderror
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit"
+                                    class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 {{ __('Send Password Reset Link') }}
                             </button>
 
@@ -49,5 +48,8 @@
                 </div>
             </div>
         </div>
+
+        <div class="h-16 w-full"></div>
+
     </div>
 @endsection
