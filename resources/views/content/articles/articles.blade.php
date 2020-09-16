@@ -100,7 +100,7 @@
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn-gardiant rounded-lg px-4 py-1 mx-2"
                                             >
-                                                Delete
+                                                DELETE
                                             </button>
                                         </form>
                                     </div>
