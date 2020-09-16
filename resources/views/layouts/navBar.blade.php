@@ -1,6 +1,6 @@
 <nav id="nav" class="flex justify-between fixed z-20  items-center text-white w-full p-4  px-6 md:px-16 ">
     <div class="flex w-2/12 justify-start">
-        <a href="#" class="flex-shrink-0 mx-4">
+        <a href="{{ route('home') }}" class="flex-shrink-0 mx-4">
             <img src="/img/favicon.png" alt="LOGO">
         </a>
     </div>
