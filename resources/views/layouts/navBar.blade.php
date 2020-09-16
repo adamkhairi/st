@@ -35,25 +35,25 @@
                 </li>
 
                 <li>
-                    <a href="#"
+                    <a href="{{ route('home') }}"
                        class="block p-4 font-bold border-b-2 border-white  hover:border-red-700 hover:bg-red-200 ">Accueil</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('activity.index') }}"
                        class="block p-4 font-bold border-b-2 border-white  hover:border-red-700 hover:bg-red-200 ">Activités</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('articles.index') }}"
                        class="block p-4 font-bold border-b-2 border-white  hover:border-red-700 hover:bg-red-200 ">Articles</a>
                 </li>
 
                 <li>
-                    <a href="#"
+                    <a href="{{ route('send_email') }}"
                        class="block p-4 font-bold border-b-2 border-white  hover:border-red-700 hover:bg-red-200 ">Contact</a>
                 </li>
 
                 <li>
-                    <a href=""
+                    <a href="{{ url('/login')}}"
                        class="block text-center text-white px-5 py-1 m-2 rounded-full btn-gardiant">Connexion</a>
 
                 </li>
@@ -75,45 +75,45 @@
             @endif
         @else
             @if (auth()->check())
-{{--                @if (auth()->user()->is_admin)--}}
-                    <a class="" href="{{ url('/profile') }}">
-                        <div class="flex flex-row justify-center items-center">
-                            <div class="rounded-full btn-gardiant">
+                {{--                @if (auth()->user()->is_admin)--}}
+                <a class="" href="{{ url('/profile') }}">
+                    <div class="flex flex-row justify-center items-center">
+                        <div class="rounded-full btn-gardiant">
 
-                                <i class="fas fa-user-circle text-5xl m-1"></i>
-                            </div>
-
-                            {{--                    <div>--}}
-
-                            {{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
-                            {{--                    </div>--}}
+                            <i class="fas fa-user-circle text-5xl m-1"></i>
                         </div>
 
-                    </a>
-                    <a href="##" class="m-1 flex-shrink-0">
-                        <img src="/img/stream.svg" class="rounded-lg" alt="">
-                    </a>
+                        {{--                    <div>--}}
 
-{{--                @else--}}
-{{--                    <a class="" href="{{ Route('user.profile') }}">--}}
-{{--                        <div class="flex flex-row justify-center items-center">--}}
-{{--                            <div class="rounded-full btn-gardiant">--}}
+                        {{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
+                        {{--                    </div>--}}
+                    </div>
 
-{{--                                <i class="fas fa-user-circle text-5xl m-1"></i>--}}
-{{--                            </div>--}}
+                </a>
+                <a href="##" class="m-1 flex-shrink-0">
+                    <img src="/img/stream.svg" class="rounded-lg" alt="">
+                </a>
 
-{{--                            --}}{{--                    <div>--}}
+                {{--                @else--}}
+                {{--                    <a class="" href="{{ Route('user.profile') }}">--}}
+                {{--                        <div class="flex flex-row justify-center items-center">--}}
+                {{--                            <div class="rounded-full btn-gardiant">--}}
 
-{{--                            --}}{{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
-{{--                            --}}{{--                    </div>--}}
-{{--                        </div>--}}
+                {{--                                <i class="fas fa-user-circle text-5xl m-1"></i>--}}
+                {{--                            </div>--}}
 
-{{--                    </a>--}}
+                {{--                            --}}{{--                    <div>--}}
 
-{{--                    <a href="##" class="m-1 flex-shrink-0"><img src="/img/stream.svg" class="rounded-lg" alt=""></a>--}}
+                {{--                            --}}{{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
+                {{--                            --}}{{--                    </div>--}}
+                {{--                        </div>--}}
 
-                @endif
-{{--            @endif--}}
+                {{--                    </a>--}}
+
+                {{--                    <a href="##" class="m-1 flex-shrink-0"><img src="/img/stream.svg" class="rounded-lg" alt=""></a>--}}
+
+            @endif
+            {{--            @endif--}}
 
             <a href="{{ route('logout') }}"
                class="no-underline btn-gardiant px-4 py-1 rounded hover:underline text-gray-300 text-sm p-3"
