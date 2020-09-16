@@ -141,7 +141,7 @@ msg_btn.addEventListener('click', function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\st\resources\js\sideBar.js */"./resources/js/sideBar.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\st\resources\js\sideBar.js */"./resources/js/sideBar.js");
 
 
 /***/ })

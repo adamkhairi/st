@@ -152,7 +152,8 @@
                         </button>
 
                         <form action="{{ route('users.destroy',Auth::user()->id) }}" method="POST"
-                              enctype="multipart/form-data">
+                              enctype="multipart/form-data"
+                              onsubmit="return confirm('etes vous sur?');">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant"

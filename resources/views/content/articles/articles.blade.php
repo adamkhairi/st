@@ -95,7 +95,9 @@
 
                                     <div>
                                         <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
-                                              enctype="multipart/form-data">
+                                              enctype="multipart/form-data"
+                                              onsubmit="return confirm('etes vous sur?');"
+                                              >
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn-gardiant rounded-full px-4 py-1"

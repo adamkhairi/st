@@ -125,7 +125,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\st\resources\js\navbar.js */"./resources/js/navbar.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\st\resources\js\navbar.js */"./resources/js/navbar.js");
 
 
 /***/ })

@@ -152,7 +152,7 @@ $(window).scroll(function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\st\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\st\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })
