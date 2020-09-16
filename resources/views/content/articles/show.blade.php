@@ -28,7 +28,7 @@
                        class="px-4 py-1 m-2 rounded btn-gardiant">
                         Update
                     </a>
-                    <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
+                    <form action="{{ route('articles.destroy',$post->id) }}"  onsubmit="return confirm('Vous êtes sur ?');" method="POST"
                           enctype="multipart/form-data">
                         @csrf
                         {{ method_field('DELETE') }}

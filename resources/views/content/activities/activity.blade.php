@@ -65,10 +65,10 @@
                                             Update
                                         </a>
                                         <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
-                                              enctype="multipart/form-data">
+                                              enctype="multipart/form-data" onsubmit="return confirm('Vous êtes sur ?');">
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <button class="bg-red-600 rounded text-white font-bold px-4 py-1">
+                                            <button type="submit" class="bg-red-600 rounded text-white font-bold px-4 py-1">
                                                 Delete
                                             </button>
                                         </form>
