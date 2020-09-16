@@ -22,5 +22,10 @@ class Article extends Model
         return $this->beLongsTo('App\User');
 
     }
+     public function category()
+    {
+        return $this->beLongsTo('App\Category','category_id');
+
+    }
 
 }

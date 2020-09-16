@@ -60,11 +60,14 @@
                     <a href="{{ route('articles.show',$post->id) }}" class="hover:opacity-75">
                         <img src="{{ $post->img }}" class="w-full overflow-hidden" alt="">
                     </a>
-                    <div class="bg-gray-200 article-body flex flex-col justify-start p-6">
+
+                        <div class="bg-gray-200 article-body flex flex-col justify-start p-6">
                         <a href="{{ route('articles.show',$post->id) }}"
                            class="text-blue-700 text-sm font-bold uppercase pb-4">
-                            {{ $post->category_id }}
+                            {{ $post->category->name }}
                         </a>
+                       
+
                         <a href="{{ route('articles.show',$post->id) }}"
                            class="text-3xl font-bold text-gray-800 pb-4">
                             {{ $post->title }}

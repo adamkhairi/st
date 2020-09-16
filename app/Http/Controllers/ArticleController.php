@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use App\Article;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,10 +23,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $posts = Article::latest()->paginate(5);
+       $posts = Article::latest()->paginate(5);
+       $category=Category::all();
 
-        return view('content.articles.articles', compact('posts'))
-            ->with('i', (request()->input('page', 1) - 1) * 4);
+        return view('content.articles.articles',['posts'=>$posts , 'cat'=>$category])
+           ->with('i', (request()->input('page', 1) - 1) * 4);
+
+
+        //  $articles = Article::with('category')->paginate(4);
+         // return view('content.articles.articles',['articles'=>$articles]);
     }
 
     /**
@@ -72,7 +77,7 @@ class ArticleController extends Controller
         $post->body = $request->body;
         $post->img = '/img/' . $name;
         $post->user_id = Auth::user()->id;
-        $post->category_id = 1;
+        $post->category_id = $request->category_id;
 
 
         $post->save();

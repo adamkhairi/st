@@ -56,6 +56,25 @@
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 name="img" type="file" id="img" placeholder="">
                         </div>
+                        
+                            <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="category">
+                                    categorie
+                                </label>
+                                    
+                                <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:border-gray-500" name="category_id" id="category_id">
+                                    @foreach(App\Category::all() as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <!-- <input
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="category_id" type="text" name="category_id" placeholder="categorie"> -->
+                               
+                            </div>
+                        </div>
+
 
                         <button type="submit" class="mr-12 px-4 py-1 rounded btn-gardiant ">Ajouter</button>
 
