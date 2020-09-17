@@ -49,7 +49,7 @@
 
         <h1 class="text-4xl text-center font-title">Activity</h1>
 
-        <div class="owl-carousel my-20 flex flex-wrap lg:flex-no-wrap justify-around lg:justify-center items-center">
+        <div class="owl-carousel my-20 flex flex-wrap lg:flex-no-wrap justify-around lg:justify-center items-center" id="video_container">
             @foreach($activ as $item)
                 <div
                     class="bg-white flex flex-col justify-between activity-card w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto mx-auto md:mx-4"
@@ -230,4 +230,41 @@
         </div>
 
     </section>
+@endsection
+@section('scripts')
+
+    <script>
+        ;(function () {
+// other stuff
+            function setClickHandler(id, fn) {
+                document.getElementById(id).onclick = fn
+            }
+
+            setClickHandler('video_container', function (e) {
+                let className = e.target.className
+                if (~className.indexOf('htmlvid')) {
+                    BigPicture({
+                        el: e.target,
+                        vidSrc: e.target.getAttribute('vidSrc'),
+                    })
+                } else if (~className.indexOf('vimeo')) {
+                    BigPicture({
+                        el: e.target,
+                        vimeoSrc: e.target.getAttribute('vimeoSrc'),
+                    })
+                } else if (~className.indexOf('twin-peaks')) {
+                    BigPicture({
+                        el: e.target,
+                        ytSrc: e.target.getAttribute('ytSrc'),
+                        dimensions: [1226, 900],
+                    })
+                } else if (~className.indexOf('youtube')) {
+                    BigPicture({
+                        el: e.target,
+                        ytSrc: e.target.getAttribute('ytSrc'),
+                    })
+                }
+            })
+        })()
+    </script>
 @endsection

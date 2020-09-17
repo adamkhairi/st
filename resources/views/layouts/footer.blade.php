@@ -4,7 +4,7 @@
             <li><a href="{{ route('home') }}">Accueil</a></li>
             <li><a href="">Activités</a></li>
             <li><a href="">Articles</a></li>
-            <li><a href="">Contact</a></li>
+
         </ul>
 
         <div class="flex flex-col text-center items-center justify-center sm:w-4/12 p-8">
@@ -23,25 +23,35 @@
             </div>
         </div>
         <div class="flex flex-col items-center justify-center sm:items-end sm:w-4/12 ">
-            <form class="">
-                <div class="md:flex md:items-center mb-6">
-                    <div class="md:w-3/3">
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                               id="inline-full-name" type="text" placeholder="Email">
+            @guest()
+                <form method="POST" action="{{ route('login') }}" class="">
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-3/3">
+                            @csrf
+                            <input
+                                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                id="inline-full-name" type="text" name="email" placeholder="Email">
+                        </div>
                     </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="md:w-3/3">
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                               id="inline-username" type="password" placeholder="********">
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-3/3">
+                            <input
+                                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                id="inline-username" name="password" type="password" placeholder="********">
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-center justify-center">
-                    <div class="">
-                        <a href="" class="px-4 py-1 m-2 rounded btn-gardiant">Connexion</a>
+                    <div class="flex items-center justify-center">
+                        <div class="">
+                            <button type="submit" class="px-4 py-1 m-2 rounded btn-gardiant">Connexion</button>
+                        </div>
                     </div>
+                </form>
+            @else
+
+                <div>
+                    <p class="text-center">Vous pouvait nous <br>contactez <a class="font-bold text-red-700 text-center" href="{{ url('/send_email') }}">ici</a></p>
                 </div>
-            </form>
+            @endguest
         </div>
     </div>
     <div class="bg-gray-900 border-t border-gray-300">
