@@ -2,6 +2,7 @@
 
 use App\Activity;
 use App\Article;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -123,3 +124,12 @@ Route::post('articles/{id}/comment/add', [
 
 Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');
+
+Route::get('/categories','categoryController@index')->name('categories');
+
+Route::get('/category/create','categoryController@create')->name('category.create');
+Route::post('/category/store','categoryController@store')->name('category.store');
+
+Route::get('/category/update/{id}', 'CategoryController@edit')->name('category.edit');
+Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('category.destory');
+ 

@@ -145,6 +145,28 @@
                     </button>
                 </div>
             </div>
+
+        
+              <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
+            <a href="
+{{ route('categories') }}
+                ">categories</a>
+        </div>
+    
+    @auth()
+        @if(auth()->user()->is_admin)
+            <div class="flex justify-center items-center p-3">
+
+                <a href="{{ route('category.create') }}" class="btn-gardiant rounded pr-4 py-1">
+                    <i class="fas fa-plus px-2"></i>
+                    ajouter categories
+                </a>
+
+            </div>
+        @endif
+    @endauth
+     
+            
             <div class="w-full bg-white text-black shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">About Us</p>
                 <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio

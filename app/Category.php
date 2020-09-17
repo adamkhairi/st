@@ -10,5 +10,5 @@ class Category extends Model
     public $fillable=['name'];
     protected $table="categories";
 
-    }
-
+    
+}

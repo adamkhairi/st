@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-    }
+        return view('content.categories.index')->with('categories',Category:: all());
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -24,6 +26,7 @@ class CategoriesController extends Controller
     public function create()
     {
         //
+        return view('content.categories.create');
     }
 
     /**
@@ -35,6 +38,14 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,['name']);
+         $category = new Category();
+        $category->name = $request->name;
+
+          $category->save();
+
+
+       return redirect('/articles')->with('success', 'categorie ajouté!');
     }
 
     /**
@@ -57,6 +68,12 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+       // $category=Category::find($id);
+        // return view('content.categories.edit')->with('category',$category);
+         $category = Category::findOrFail($id);
+
+        return view('content.categories.update', compact('category'));
+
     }
 
     /**
@@ -69,6 +86,16 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+          $category = Category::findOrFail($id);
+
+      
+
+        $category->name = $request->name;
+       
+        $category->save();
+
+
+        return redirect()->back()->with('success', 'categorie modifier!');
     }
 
     /**
@@ -80,5 +107,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        $category = Category::findOrFail($id);
+        $category->delete();
+//        dd($art);
+        return redirect()->route('content.categories.index')->with('success', 'La categories est supprimé');
+        
     }
 }
