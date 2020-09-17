@@ -85,14 +85,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
           $category = Category::findOrFail($id);
 
       
 
         $category->name = $request->name;
        
-        $category->save();
+       $category->save();
 
 
         return redirect()->back()->with('success', 'categorie modifier!');
@@ -106,11 +106,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $category = Category::findOrFail($id);
+       $category = Category::find($id);
         $category->delete();
 //        dd($art);
-        return redirect()->route('content.categories.index')->with('success', 'La categories est supprimé');
+        return redirect()->route('category.index')->with('success', 'La categorie est supprimé');
+        
         
     }
 }

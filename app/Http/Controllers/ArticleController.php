@@ -154,8 +154,9 @@ class ArticleController extends Controller
 
         $post->title = $request->title;
         $post->body = $request->body;
+       // $post->img = '/img/' . $name;
         $post->user_id = Auth::user()->id;
-        $post->category_id = 1;
+       
         $post->save();
 
 
@@ -170,7 +171,7 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $art = Article::findOrFail($id);
+        $art = Article::find($id);
         $art->delete();
 //        dd($art);
         return redirect()->route('articles.index')->with('success', 'L\'Article est supprimé');

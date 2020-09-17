@@ -91,13 +91,13 @@
                                 <div class="flex justify-center items-center">
                                     <div>
                                         <a type="button" class="btn-gardiant rounded-full px-4 py-1"
-                                           href="{{route('articles.edit',[$post->id])}}">
+                                           href="{{route('articles.edit',$post->id)}}">
                                             UPDATE
                                         </a>
                                     </div>
 
                                     <div>
-                                        <form action="{{ route('articles.destroy',$post->id) }}" method="POST"
+                                        <form action="{{ route('articles.destroy',$post->id) }}" method="P0OST"
                                               enctype="multipart/form-data"
                                               onsubmit="return confirm('etes vous sur?');"
                                               >

@@ -26,28 +26,24 @@
        @auth()
                             @if(auth()->user()->is_admin)
       <td class="border px-4 py-2" >
-           <div class="flex justify-center items-center">
-                                    <div>
-                                        <a type="button" class="btn-gardiant rounded-full px-4 py-1 fas fa-edit pr-4"
-                                           href="">
-                                            
+           
+                                        <a type="button" class="btn-gardiant rounded-full px-4 py-1"
+                                           href="{{route('category.edit',$category->id)}}">
+                                            UPDATE
                                         </a>
-                                    </div>
-      </td>
+                                    
       <td class="border px-4 py-2">  
-           <div>
-                                        <form action="" method="POST"
+          <form action="{{ route('category.destroy',$category->id) }}" method="P0OST"
                                               enctype="multipart/form-data"
                                               onsubmit="return confirm('etes vous sur?');"
                                               >
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn-gardiant rounded-full px-4 py-1 fas fa-trash-alt pr-4"
+                                            <button type="submit" class="btn-gardiant rounded-full px-4 py-1"
                                             >
-                                              
+                                                Delete
                                             </button>
                                         </form>
-                                    </div>
       </td>
        @endif
                         @endauth

@@ -127,9 +127,20 @@ Route::post('/sendemail/send', 'SendEmailController@send');
 
 Route::get('/categories','categoryController@index')->name('categories');
 
-Route::get('/category/create','categoryController@create')->name('category.create');
-Route::post('/category/store','categoryController@store')->name('category.store');
+//Route::get('/category/create','categoryController@create')->name('category.create');
+//Route::post('/category/store','categoryController@store')->name('category.store');
 
-Route::get('/category/update/{id}', 'CategoryController@edit')->name('category.edit');
-Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('category.destory');
+//Route::get('/category/edit/{id}', 'CategoryController@edit')->name('category.edit');
+//Route::get('/category/delete/{id}', 'CategoryController@destroy')->name('category.delete');
  
+Route::resource('/category', 'CategoryController')->names([
+    'index' => 'category.index',
+    'create' => 'category.create',
+    'update' => 'category.update',
+    'edit' => 'category.edit',
+    'destroy' => 'category.destroy'
+]);
+
+Route::post('/category/{id}/edit', [
+    'uses' => 'CategoryController@update',
+    'as' => 'category.update']);
