@@ -13,8 +13,7 @@
             <a href="{{ route('activity.index') }}">Activités</a>
         </div>
         <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
-            <a href="
-{{ route('articles.index') }}
+            <a href="{{ route('articles.index') }}
                 ">Articles</a>
         </div>
         <div class="mx-3 hover:bg-gray-200 hover:text-gray-900 hover:shadow-lg hover:font-bold px-6 py-1 rounded">
@@ -22,8 +21,20 @@
         </div>
     </div>
 
-    <div class="">
-        <div id="menu-toggle" class="block lg:hidden">
+    <div class="flex items-center">
+        @auth()
+            <a class="block lg:hidden " href="{{ url('/profile') }}">
+                <div class="flex flex-row justify-center items-center">
+                    <div class="rounded-full btn-gardiant">
+
+                        <i class="fas fa-user-circle text-3xl md:text-4xl m-1"></i>
+                    </div>
+
+                </div>
+
+            </a>
+        @endauth
+        <div id="menu-toggle" class="ml-3 block lg:hidden">
             <i class="fas fa-bars text-4xl hover:text-gray-600"></i>
         </div>
         <div id="menu" class="hidden absolute rounded-lg bg-gray-300 shadow w-64 m-2 right-0">
@@ -52,11 +63,13 @@
                        class="block p-4 font-bold border-b-2 border-white  hover:border-red-700 hover:bg-red-200 ">Contact</a>
                 </li>
 
-                <li>
-                    <a href="{{ url('/login')}}"
-                       class="block text-center text-white px-5 py-1 m-2 rounded-full btn-gardiant">Connexion</a>
+                @guest()
+                    <li>
+                        <a href="{{ url('/login')}}"
+                           class="block text-center text-white px-5 py-1 m-2 rounded-full btn-gardiant">Connexion</a>
 
-                </li>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>
@@ -75,7 +88,6 @@
             @endif
         @else
             @if (auth()->check())
-                {{--                @if (auth()->user()->is_admin)--}}
                 <a class="" href="{{ url('/profile') }}">
                     <div class="flex flex-row justify-center items-center">
                         <div class="rounded-full btn-gardiant">
@@ -83,37 +95,13 @@
                             <i class="fas fa-user-circle text-5xl m-1"></i>
                         </div>
 
-                        {{--                    <div>--}}
-
-                        {{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
-                        {{--                    </div>--}}
                     </div>
 
                 </a>
                 <a href="##" class="m-1 flex-shrink-0">
                     <img src="/img/stream.svg" class="rounded-lg" alt="">
                 </a>
-
-                {{--                @else--}}
-                {{--                    <a class="" href="{{ Route('user.profile') }}">--}}
-                {{--                        <div class="flex flex-row justify-center items-center">--}}
-                {{--                            <div class="rounded-full btn-gardiant">--}}
-
-                {{--                                <i class="fas fa-user-circle text-5xl m-1"></i>--}}
-                {{--                            </div>--}}
-
-                {{--                            --}}{{--                    <div>--}}
-
-                {{--                            --}}{{--                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>--}}
-                {{--                            --}}{{--                    </div>--}}
-                {{--                        </div>--}}
-
-                {{--                    </a>--}}
-
-                {{--                    <a href="##" class="m-1 flex-shrink-0"><img src="/img/stream.svg" class="rounded-lg" alt=""></a>--}}
-
             @endif
-            {{--            @endif--}}
 
             <a href="{{ route('logout') }}"
                class="no-underline btn-gardiant px-4 py-1 rounded hover:underline text-gray-300 text-sm p-3"

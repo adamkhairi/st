@@ -105,7 +105,7 @@ class ActivityController extends Controller
         $this->validate($request, [
             'title' => 'required|max:100',
             'description' => 'required|max:1000 ',
-            'video' => 'required',
+            'video' => '',
 
         ]);
 

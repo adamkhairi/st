@@ -77,7 +77,7 @@
                             </p>
                         </a>
 
-                        <a class="uppercase w-3/12 ml-auto text-center float-right btn-gardiant rounded px-4 py-2 m-2 "
+                        <a class="uppercase w-2/12 ml-auto text-center float-right btn-gardiant rounded px-2 py-1 m-2 "
                            href="{{ route('articles.show',$post->id) }}">
                             Lire plus
                             <i class="fas fa-long-arrow-alt-right pl-2"></i>
@@ -165,10 +165,10 @@
                     <img class="hover:opacity-75" src="./Tailwind Blog Template_files/150x150(7)">
                     <img class="hover:opacity-75" src="./Tailwind Blog Template_files/150x150(8)">
                 </div>
-                <a href="https://tailwind-blog-demo.dgrzyb.me/#"
+                <a href="#"
                    class="w-full btn-gardiant text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
                     <i class="fab fa-instagram mr-2"></i>
-                    Follow @Adam
+                    Follow
 
                 </a>
             </div>

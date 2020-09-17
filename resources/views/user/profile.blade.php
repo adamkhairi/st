@@ -6,7 +6,9 @@
 
         <div>
             <div id="header" class="w-full  h-64">
-                <h1 class=" text-center font-title text-5xl pt-24">Profile</h1>
+                <h1 class=" text-center font-title text-5xl pt-24">
+                   {{ auth()->user()->is_admin ? 'Admin' : '' }}
+                        Profile</h1>
             </div>
 
             <div class=" bg-white p-2">

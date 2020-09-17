@@ -13,23 +13,26 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, quis.</p>
             </div>
             <div class="my-4">
-                <div class="my-6">
-                    @if (Route::has('login'))
-                        <a href="{{ route('login') }}" id="loginBtnHero"
-                           class="btn-gardiant px-4 py-1  rounded whitespace-no-wrap">Se
-                            connecter</a>
+                @guest()
+
+                    <div class="my-6">
+                        @if (Route::has('login'))
+                            <a href="{{ route('login') }}" id="loginBtnHero"
+                               class="btn-gardiant px-4 py-1  rounded whitespace-no-wrap">Se
+                                connecter</a>
 
 
-                    @endif
-                </div>
-                <div class="my-6">
+                        @endif
+                    </div>
+                    <div class="my-6">
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" id="registerBtn"
-                           class="btn-gardiant px-4 py-1 mt-5 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" id="registerBtn"
+                               class="btn-gardiant px-4 py-1 mt-5 m-2 rounded whitespace-no-wrap">Inscrivez-vous</a>
 
-                    @endif
-                </div>
+                        @endif
+                    </div>
+                @endguest
             </div>
 
         </div>
@@ -46,10 +49,10 @@
 
         <h1 class="text-4xl text-center font-title">Activity</h1>
 
-        <div class="owl-carousel my-20 flex">
+        <div class="owl-carousel my-20 flex flex-wrap lg:flex-no-wrap justify-around lg:justify-center items-center">
             @foreach($activ as $item)
                 <div
-                    class="bg-white flex flex-col justify-between activity-card mx-2 w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto"
+                    class="bg-white flex flex-col justify-between activity-card w-64 shadow rounded hover:shadow-lg transition duration-200 transform text-black hover:-translate-y-2 overflow-hidden my-5 h-auto mx-auto md:mx-4"
                 >
                     <div class="flex">
 
@@ -78,7 +81,7 @@
                                 <div class="w-full flex justify-around items-center pb-3">
 
                                     <a href="{{ route('activity.edit',$item->id) }}" type="button"
-                                       class="bg-blue-600 text-white rounded font-bold md:mb-4 px-4 py-1">
+                                       class="bg-blue-600 text-white rounded font-bold px-4 py-1">
                                         Update
                                     </a>
                                     <form action="{{ route('activity.destroy', $item->id) }}" method="POST"
