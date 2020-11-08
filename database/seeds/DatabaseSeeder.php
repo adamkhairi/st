@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
 
         // create a few articles,users,comments,categories in database:
         for ($i = 0; $i < 10; $i++) {
-        //    Article::create([
-        //        'title' => $faker->sentence,
-        //        'img' => $faker->imageUrl(),
-        //        'body' => $faker->paragraph,
-        //        'user_id' => value(1),
-        //        'category_id' => value(1),
-        //    ]);
+           Article::create([
+               'title' => $faker->sentence,
+               'img' => $faker->imageUrl(),
+               'body' => $faker->paragraph,
+               'user_id' => value(1),
+               'category_id' => value(1),
+           ]);
         //    User::create([
         //        'name' => $faker->name,
         //        'email' => $faker->email,
